@@ -10,7 +10,15 @@
 </head>
 <body>
     <div id='app'>
-        
+        <div v-show="emailArray.length==10" class="mailBox p-5">
+            <ul>
+                <template v-for="(email, i) in emailArray">
+                    <li v-show="emailArray.length==10">
+                        {{emailArray[i]}}
+                    </li>
+                </template>
+            </ul>
+        </div>
     </div>
 
 

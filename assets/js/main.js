@@ -5,13 +5,14 @@ createApp({
         return {
             randomMailApi: 'https://flynn.boolean.careers/exercises/api/random/mail',
             emailArray: [],
+            mail:"",
         }
     },
     methods: {
         callApi() {
             axios.get(this.randomMailApi)
                 .then(response => {
-                    console.log(response.data.response);
+                    this.emailArray.push(response.data.response);
                 })
                 .catch(error => {
                     console.error(error);
@@ -20,12 +21,10 @@ createApp({
         cloneObj() {
             for (let i = 0; i < 10; i++) {
                 const newMail = this.callApi()
-                this.emailArray.push(newMail)
             }
         }
     },
     mounted() {
         this.cloneObj()
-
     },
 }).mount('#app')
